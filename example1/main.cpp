@@ -33,7 +33,7 @@ void setup()
     constexpr unsigned PIT_channel = 0; // for the sake of simplicity the PIT class doesn't automatically choose a free channel. (0..3)
 
     // use free function callback
-    // timer.begin(0, onTimer, 250'000);
+    timer.begin(0, onTimer, 250'000);
 
     // attach lambda function as callback
     //timer.begin(PIT_channel, [] { Serial.println("called lambda"); }, 250'000);
