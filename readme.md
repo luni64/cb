@@ -1,4 +1,4 @@
-** This is just prove of concept code. There is no error checking code implemented and there are most probably are some bugs in it**
+**This is just prove of concept code. There is no error checking code implemented and there are most probably are some bugs in it**
 
 This is just a collection of examples to show a possible implementation of a new callback system
 See https://forum.pjrc.com/threads/70986-Lightweight-C-callbacks?p=311798&viewfull=1#post311798
