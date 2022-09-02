@@ -30,19 +30,19 @@ void setup()
 {
     while (!Serial) {}
 
-    constexpr unsigned PIT_channel = 0; // for the sake of simplicity the PIT class doesn't automatically choose a free channel. (0..3)
+    //!!! The begin function defaults to PIT timer channel 0. You can use e.g channel 3 by timer.begin(onTimer, 250'000, 3); !!!
 
     // use free function callback
-    timer.begin(0, onTimer, 250'000);
-
-    // attach lambda function as callback
-    //timer.begin(PIT_channel, [] { Serial.println("called lambda"); }, 250'000);
+    timer.begin(onTimer, 250'000);
 
     // use lambda to attach member function as callback
-    // timer.begin(PIT_channel, [] { test.myFunc2(); }, 250'000);
+    // timer.begin([] { test.myFunc2(); }, 250'000);
 
     // use member function pointer and instance to attach callback
-    //timer.begin(PIT_channel, &Test::myFunc1, &test, 250'000);
+    // timer.begin(&Test::myFunc1, &test, 250'000, 0);
+
+    // attach non capturing lambda function as callback
+    // timer.begin([] { Serial.println("called lambda"); }, 250'000);
 }
 
 void loop() {}

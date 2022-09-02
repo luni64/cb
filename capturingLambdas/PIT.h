@@ -1,15 +1,10 @@
-/**
- * CallbackHelper is u
- *
- **/
-
 #pragma once
 #include "callbackHelper.h"
 
 class PIT : protected CallbackHelper<4> // derive from CallbackHelper, pass required number of callback slots as template paramter
 {
  public:
-    void begin(unsigned ch, void (*callback)(), float period) // normal free function, static member function, captureless lamdas
+    void begin(void (*callback)(), float period, unsigned ch = 0) // normal free function, static member function, captureless lamdas
     {
         callbacks[ch] = makeCallback(callback, ch); // generate a delegate from the paramters and store it for calling from the ISR
         initPIT();                                  // setup PIT module
@@ -17,10 +12,18 @@ class PIT : protected CallbackHelper<4> // derive from CallbackHelper, pass requ
     }
 
     template <class T>
-    void begin(unsigned ch, void (T::*mfp)(), T* obj, float period) // member function pointer version
+    void begin(void (T::*mfp)(), T* obj, float period, unsigned ch = 0) // member function pointer version
     {
         callbacks[ch] = makeCallback(mfp, obj, ch); // make a delegate from the parameters and store for calling from the ISR
         initPIT();                                  // setup PIT module
+        startChannel(ch, period);
+    }
+
+    template <class T>
+    void begin(T lambda, float period, unsigned ch = 0) // member function pointer version
+    {
+        callbacks[ch] = makeCallback(lambda, ch); // make a delegate from the parameters and store for calling from the ISR
+        initPIT();                                // setup PIT module
         startChannel(ch, period);
     }
 

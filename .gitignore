@@ -3,5 +3,6 @@
 .vscode/**
 lib/**
 src/**
+cores/**
 makefile
 
