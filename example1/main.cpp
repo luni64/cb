@@ -32,8 +32,8 @@ void setup()
 
     //!!! The begin function defaults to PIT timer channel 0. You can use e.g channel 3 by timer.begin(onTimer, 250'000, 3); !!!
 
-    // use free function callback
-    timer.begin(onTimer, 250'000);
+    use free function callback
+    //timer.begin(onTimer, 250'000);
 
     // use lambda to attach member function as callback
     // timer.begin([] { test.myFunc2(); }, 250'000);
@@ -43,6 +43,10 @@ void setup()
 
     // attach non capturing lambda function as callback
     // timer.begin([] { Serial.println("called lambda"); }, 250'000);
+
+    // attach capturing lambda function as callback
+    // int n = 42;
+    // timer.begin([n] { Serial.println(n); }, 500'000 );
 }
 
 void loop() {}
