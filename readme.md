@@ -1,3 +1,7 @@
+# This code is obsolete. A better version can be found here https://github.com/luni64/callbackhelper
+
+
+
 **This is just prove of concept code. There is no error checking code implemented and there are most probably are some bugs in it**
 
 This is just a collection of examples to show a possible implementation of a new callback system
